@@ -22,14 +22,13 @@ export const Container = styled.header`
 export const Search = styled.div`
   display: flex;
   flex-grow: 1;
-  align-items: center;
-  justify-content: baseline;
+  justify-content: flex-end;
 
   input {
     font-size: 18px;
     color: #333;
     padding: 7px;
-    width: 90%;
+    width: 100%;
     border: none;
     border-radius: 3px 0 0 3px;
   }
