@@ -8,13 +8,16 @@ import logo from '../../assets/images/Logo_ML.png'
 export default function Header() {
   return (
     <Container>
-      <Link to="/">
-        <img src={logo} alt="Mercado Livre" />
-      </Link>
+      <div className="content">
+        <Link to="/">
+          <img src={logo} alt="Mercado Livre" />
+        </Link>
 
-      <Search>
-        <input type="text" />
-      </Search>
+        <Search>
+          <input type="text" placeholder="Nunca dejes de buscar" />
+          <button>Pesquisar</button>
+        </Search>
+      </div>
     </Container>
   )
 }

@@ -1,13 +1,44 @@
 import styled from 'styled-components'
 
+import search from '../../assets/images/ic_Search.png'
+
 export const Container = styled.header`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
   background-color: #ffe600;
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 10px 0;
+    height: 100%;
+
+    img {
+      margin-right: 30px;
+    }
+  }
 `
 export const Search = styled.div`
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: baseline;
+
   input {
-    width: 180px;
+    font-size: 18px;
+    color: #333;
+    padding: 7px;
+    width: 90%;
+    border: none;
+    border-radius: 3px 0 0 3px;
+  }
+
+  button {
+    border: none;
+    text-indent: -9999px;
+    background: #eee url(${search}) no-repeat center center;
+    padding: 9.5px 20px;
+    border-radius: 0 3px 3px 0;
   }
 `
