@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { darken } from 'polished'
 
 import search from '../../assets/images/ic_Search.png'
 
@@ -39,5 +40,9 @@ export const Search = styled.div`
     background: #eee url(${search}) no-repeat center center;
     padding: 9.5px 20px;
     border-radius: 0 3px 3px 0;
+
+    &:hover {
+      background: ${darken(0.03, '#eee')} url(${search}) no-repeat center center;
+    }
   }
 `
