@@ -12,6 +12,9 @@ function Details() {
   const { id } = useParams()
   const [product, setProduct] = useState({})
   const [description, setDescription] = useState({})
+  const [categoryTree, setCategoryTree] = useState([])
+
+  useEffect(() => {}, [])
 
   useEffect(() => {
     async function loadProduct() {
@@ -26,13 +29,30 @@ function Details() {
       setDescription(resDescription.data)
     }
 
+    async function loadCategoryTree() {
+      if (product.category_id != undefined) {
+        const resCategoryTree = await api.get(
+          `categories/${product.category_id}`
+        )
+
+        const tree = []
+
+        resCategoryTree.data.path_from_root.map(category =>
+          tree.push(category.name)
+        )
+
+        setCategoryTree(tree)
+      }
+    }
+
     loadProduct()
     loadDescription()
-  }, [id])
+    loadCategoryTree()
+  }, [id, product.category_id])
 
   return (
     <Container>
-      <Breadcrumbs />
+      <Breadcrumbs categoryTree={categoryTree} />
       <div className="container">
         <div className="productInfo">
           <div className="picture">
@@ -48,9 +68,9 @@ function Details() {
           </div>
           <div className="info">
             <small>
-              {product.condition == 'new'
+              {product.condition === 'new'
                 ? 'Novo'
-                : product.condition == 'used'
+                : product.condition === 'used'
                 ? 'Usado'
                 : 'Recondicionado'}{' '}
               - {product.sold_quantity} vendidos

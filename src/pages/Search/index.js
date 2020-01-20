@@ -11,6 +11,7 @@ import api from '../../services/api'
 import { formatPrice } from '../../utils/format'
 
 function Search() {
+  const categoryTree = []
   const { term } = useParams()
   const [products, setProducts] = useState([])
 
@@ -27,11 +28,11 @@ function Search() {
     }
 
     loadProduct()
-  }, [products, term])
+  }, [term])
 
   return (
     <Container>
-      <Breadcrumbs />
+      <Breadcrumbs categoryTree={categoryTree} />
       <div className="container">
         {products.slice(0, 4).map(p => (
           <div className="wrap" key={p.id}>

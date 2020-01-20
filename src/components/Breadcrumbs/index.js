@@ -2,15 +2,13 @@ import React from 'react'
 
 import { Container } from './styles'
 
-export default function Breadcrumbs() {
+export default function Breadcrumbs({ categoryTree }) {
   return (
     <Container>
       <ul>
-        <li>Eletrónica, Audio y Video</li>
-        <li>IPod</li>
-        <li>Reproductores</li>
-        <li>IPod touch</li>
-        <li>32 GB</li>
+        {categoryTree.map((category, index) => (
+          <li key={index}>{category}</li>
+        ))}
       </ul>
     </Container>
   )

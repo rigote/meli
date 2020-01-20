@@ -8,6 +8,12 @@ import logo from '../../assets/images/Logo_ML.png'
 export default function Header() {
   const [term, setTerm] = useState('')
 
+  function handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      document.getElementById('search').click()
+    }
+  }
+
   return (
     <Container>
       <div className="content">
@@ -20,8 +26,11 @@ export default function Header() {
             type="text"
             placeholder="Nunca deixe de buscar"
             onChange={e => setTerm(e.target.value)}
+            onKeyPress={handleKeyPress}
           />
-          <Link to={`/search/${term}`}>Pesquisar</Link>
+          <Link to={`/search/${term}`} id="search">
+            Pesquisar
+          </Link>
         </Search>
       </div>
     </Container>
