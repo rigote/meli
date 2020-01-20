@@ -11,7 +11,7 @@ Primeiro passo será instalar as dependência do projeto. Para instalar, acesse 
 Para rodar o projeto em modo de desenvolvimento, basta executar o comando ```yarn start``` via terminal no diretório raiz do projeto.<br />
 Após a execução, o projeto poderá ser visualizado na url [http://localhost:3000](http://localhost:3000) em seu browser principal.
 
-### `Estrutura do projeto`
+### Estrutura do projeto
 
 O projeto foi desenvolvido na seguinte estrutura: <br />
 
