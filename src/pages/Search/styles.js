@@ -22,16 +22,20 @@ export const Container = styled.div`
 
       .product-picture {
         display: flex;
-        align-items: center;
-        border-radius: 4px;
+        justify-content: center;
         margin-right: 16px;
         margin-bottom: 16px;
-        width: 190px;
-        height: 180px;
+        max-width: 180px;
+        max-height: 180px;
 
-        img {
-          width: 180px;
-          height: auto;
+        a {
+          img {
+            max-width: 180px;
+            max-height: 180px;
+            width: auto;
+            height: auto;
+            border-radius: 4px;
+          }
         }
       }
 

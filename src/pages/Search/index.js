@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+
+import { Link, useParams } from 'react-router-dom'
 
 import { Container } from './styles'
 
@@ -7,55 +8,57 @@ import Breadcrumbs from '../../components/Breadcrumbs'
 import shipping from '../../assets/images/ic_shipping.png'
 
 import api from '../../services/api'
+import { formatPrice } from '../../utils/format'
 
-export default function Search() {
-  const { products, setProducts } = useState([])
-  const { q } = URLSearchParams()
-  console.log(useLocation().search)
+function Search() {
+  const { term } = useParams()
+  const [products, setProducts] = useState([])
 
   useEffect(() => {
     async function loadProduct() {
-      const response = await api.get(`/sites/MLB/search?q=${q}`)
-      console.log(response)
+      const response = await api.get(`/sites/MLB/search?q=${term}`)
 
-      setProducts(response.data.results)
+      const data = response.data.results.map(product => ({
+        ...product,
+        priceFormatted: formatPrice(product.price),
+      }))
+
+      setProducts(data)
     }
 
     loadProduct()
-  }, [q, setProducts])
+  }, [products, term])
 
   return (
     <Container>
       <Breadcrumbs />
-
       <div className="container">
-        {products.map(product => (
-          <Link to={`/Details/${product.id}`}>
-            <div className="wrap" key={product.id}>
-              <div className="product-picture">
-                <img
-                  src={product.thumbnail.replace('-I.', '-O.')}
-                  alt={product.title}
-                />
-              </div>
-              <div>
-                <p>
-                  <strong>
-                    {product.price}
-                    {product.shipping.free_shipping ? (
-                      <img src={shipping} alt="Frete Grátis" />
-                    ) : (
-                      ''
-                    )}
-                  </strong>
-                  <small>{product.address.state_name}</small>
-                </p>
-                <span>{product.title}</span>
-              </div>
+        {products.slice(0, 4).map(p => (
+          <div className="wrap" key={p.id}>
+            <div className="product-picture">
+              <Link to={`/item/${p.id}`}>
+                <img src={p.thumbnail.replace('-I.', '-O.')} alt={p.title} />
+              </Link>
             </div>
-          </Link>
+            <div>
+              <p>
+                <strong>
+                  {p.priceFormatted}
+                  {p.shipping.free_shipping ? (
+                    <img src={shipping} alt="Frete Grátis" />
+                  ) : (
+                    ''
+                  )}
+                </strong>
+                <small>{p.address.state_name}</small>
+              </p>
+              <span>{p.title}</span>
+            </div>
+          </div>
         ))}
       </div>
     </Container>
   )
 }
+
+export default Search

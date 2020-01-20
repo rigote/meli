@@ -21,7 +21,7 @@ export default function Header() {
             placeholder="Nunca dejes de buscar"
             onChange={e => setTerm(e.target.value)}
           />
-          <Link to={`/search?q=${term}`}>Pesquisar</Link>
+          <Link to={`/search/${term}`}>Pesquisar</Link>
         </Search>
       </div>
     </Container>

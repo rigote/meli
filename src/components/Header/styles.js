@@ -33,7 +33,7 @@ export const Search = styled.div`
     border-radius: 3px 0 0 3px;
   }
 
-  button {
+  a {
     border: none;
     text-indent: -9999px;
     background: #eee url(${search}) no-repeat center center;
