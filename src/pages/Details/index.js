@@ -15,20 +15,20 @@ function Details() {
 
   useEffect(() => {
     async function loadProduct() {
-      const response = await api.get(`items/${id}`)
+      const resProduct = await api.get(`items/${id}`)
 
-      setProduct(response.data)
+      setProduct(resProduct.data)
     }
 
     async function loadDescription() {
-      const response = await api.get(`items/${id}/description`)
+      const resDescription = await api.get(`items/${id}/description`)
 
-      setDescription(response.data)
+      setDescription(resDescription.data)
     }
 
     loadProduct()
     loadDescription()
-  }, [id])
+  }, [id, product.category_id])
 
   return (
     <Container>
@@ -41,6 +41,10 @@ function Details() {
             ) : (
               ''
             )}
+            <div className="description">
+              <strong>Descrição do produto</strong>
+              <p>{description.plain_text}</p>
+            </div>
           </div>
           <div className="info">
             <small>
@@ -50,11 +54,6 @@ function Details() {
             <strong>{formatPrice(product.price)}</strong>
             <button>Comprar</button>
           </div>
-        </div>
-
-        <div className="description">
-          <strong>Descrição do produto</strong>
-          <p>{description.plain_text}</p>
         </div>
       </div>
     </Container>

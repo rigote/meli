@@ -19,6 +19,7 @@ export const Container = styled.div`
 
       .picture {
         display: flex;
+        flex-direction: column;
         align-items: center;
         margin-right: 15px;
         max-width: 680px;
@@ -26,6 +27,20 @@ export const Container = styled.div`
         img {
           max-width: 680px;
           height: auto;
+        }
+
+        .description {
+          width: 680px;
+          strong {
+            font-size: 28px;
+            margin: 32px;
+          }
+
+          p {
+            font-size: 16px;
+            color: #999;
+            margin: 32px;
+          }
         }
       }
 
@@ -62,19 +77,6 @@ export const Container = styled.div`
             background-color: ${darken(0.03, '#3883fa')};
           }
         }
-      }
-    }
-
-    .description {
-      strong {
-        font-size: 28px;
-        margin: 32px;
-      }
-
-      p {
-        font-size: 16px;
-        color: #999;
-        margin: 32px;
       }
     }
   }
