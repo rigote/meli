@@ -28,7 +28,7 @@ function Details() {
 
     loadProduct()
     loadDescription()
-  }, [id, product.category_id])
+  }, [id])
 
   return (
     <Container>
@@ -48,7 +48,12 @@ function Details() {
           </div>
           <div className="info">
             <small>
-              {product.condition} - {product.sold_quantity} vendidos
+              {product.condition == 'new'
+                ? 'Novo'
+                : product.condition == 'used'
+                ? 'Usado'
+                : 'Recondicionado'}{' '}
+              - {product.sold_quantity} vendidos
             </small>
             <span>{product.title}</span>
             <strong>{formatPrice(product.price)}</strong>
