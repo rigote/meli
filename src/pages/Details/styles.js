@@ -27,6 +27,7 @@ export const Container = styled.div`
         img {
           max-width: 680px;
           height: auto;
+          margin: 32px 15px 32px;
         }
 
         .description {

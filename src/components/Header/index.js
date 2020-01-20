@@ -18,7 +18,7 @@ export default function Header() {
         <Search>
           <input
             type="text"
-            placeholder="Nunca dejes de buscar"
+            placeholder="Nunca deixe de buscar"
             onChange={e => setTerm(e.target.value)}
           />
           <Link to={`/search/${term}`}>Pesquisar</Link>
